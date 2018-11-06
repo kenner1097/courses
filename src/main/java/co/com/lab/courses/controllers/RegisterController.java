@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,7 @@ public class RegisterController {
 	/*
 	 * Guardar y modificar
 	 */
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/saveOrUpdate", method=RequestMethod.POST)
 	public RestResponse saveOrUpdate(@RequestBody String registerJson) throws JsonParseException, JsonMappingException, IOException {
 		
@@ -45,6 +47,7 @@ public class RegisterController {
 		return new RestResponse(HttpStatus.OK.value(), "Operacion exitosa");
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/deleteRegister", method=RequestMethod.POST)
 	public RestResponse deleteRegister(@RequestBody String registerJson) throws Exception {
 		
@@ -61,6 +64,7 @@ public class RegisterController {
 		return new RestResponse(HttpStatus.OK.value(), "Operacion exitosa");
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/getRegister", method=RequestMethod.GET)
 	public List<Register> getRegister() {
 		return this.registerService.findAll();
